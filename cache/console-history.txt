@@ -1,0 +1,16 @@
+console.log("✅ Deal Completed & Funds Released to Traveler!");
+await tx.wait();
+const tx = await escrow.confirmDelivery(dealId);
+console.log("✅ Item Marked as Delivered!");
+await tx.wait();
+const tx = await escrow.markItemDelivered(dealId);
+const dealId = "0xDEAL_ID_HERE";  // Replace with actual dealId
+console.log("✅ Deal Created!");
+await tx.wait();
+const tx = await escrow.createDeal(traveler, { value: ethers.utils.parseEther("0.1") });
+const traveler = "0xTRAVELER_ADDRESS_HERE";  // Replace with actual traveler address
+const buyer = await ethers.getSigner();  // Get current signer (wallet)
+const escrow = await TravelEscrow.attach(contractAddress);
+const TravelEscrow = await ethers.getContractFactory("TravelEscrow");
+const contractAddress = "0x1b9a5897d939044F550D2962225948A366Ff3dbE";  // Your deployed contract address
+(await ethers.provider.getBalance("YOUR_WALLET_ADDRESS")).toString()
